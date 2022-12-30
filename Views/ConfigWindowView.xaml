@@ -1,0 +1,27 @@
+﻿<Window x:Class="BroadCastHelperLib.Views.ConfigWindowView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BroadCastHelperLib.Views"
+        xmlns:vm="clr-namespace:BroadCastHelperLib.ModelViews"
+        mc:Ignorable="d"
+        Title="Сетевые настройки" Height="200" Width="300" WindowStartupLocation="CenterScreen" WindowStyle="ToolWindow">
+    <Window.DataContext>
+        <vm:ConfigWindowMV/>
+    </Window.DataContext>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height ="25"/>
+            <RowDefinition/>
+            <RowDefinition Height ="25"/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Label Content="Адресс группы:" Grid.Row="0" HorizontalAlignment="Center"/>
+        <TextBox Text="{Binding Ip, UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        <Label Content="Порт:" Grid.Row="2" HorizontalAlignment="Center"/>
+        <TextBox Text="{Binding Port, UpdateSourceTrigger=PropertyChanged}" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        <Button Grid.Row="4" Content="Ок" Command="{Binding OkComm}" CommandParameter="{Binding Mode=OneWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"/>
+    </Grid>
+</Window>
